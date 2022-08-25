@@ -56,7 +56,6 @@ services:
     expose:
       - 8080
     ports:
-      - "8000:8000"
       - "8104:8104"
       - "8144:8144"
     labels:
@@ -72,7 +71,7 @@ services:
       - ./xnat-data/tomcat:/usr/local/tomcat/logs
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      CATALINA_OPTS: "-Xms${XNAT_MIN_HEAP} -Xmx${XNAT_MAX_HEAP} -Dxnat.home=${XNAT_HOME} -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:8000"
+      CATALINA_OPTS: "-Xms${XNAT_MIN_HEAP} -Xmx${XNAT_MAX_HEAP} -Dxnat.home=${XNAT_HOME}"
       PGPASSWORD: "${XNAT_DATASOURCE_PASSWORD}"
       XNAT_HOME: "${XNAT_HOME}"
 
